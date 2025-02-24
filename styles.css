@@ -403,55 +403,76 @@ footer .footer-bottom {
 /* Pricing Section */
 .pricing {
     padding: 60px 0;
-    text-align: center;
-    background: #f9f9f9;
+    background: #fff;
 }
 
 .pricing h1 {
     font-size: 2.5rem;
     margin-bottom: 20px;
+    text-align: center;
+}
+
+.pricing h2 {
+    padding-left: 40px
 }
 
 .pricing p {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
+    text-align: left;
+    margin-bottom: 40px;
+    margin-left: 40px;
+}
+
+.pricing-section {
     margin-bottom: 40px;
 }
 
-.pricing-table {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
+.pricing-section h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #414652;
+}
+
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
 }
 
 .pricing-item {
-    background: #fff;
+    background: #f9f9f9;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 30%;
-    text-align: left;
+    text-align: center;
+    transition: transform 0.3s ease;
 }
 
-.pricing-item h2 {
+.pricing-item:hover {
+    transform: translateY(-10px);
+}
+
+.pricing-item h3 {
     font-size: 1.5rem;
     margin-bottom: 10px;
+    color: #77aaff;
 }
 
 .pricing-item p {
-    font-size: 1.1rem;
-    margin-bottom: 15px;
-}
-
-.pricing-item ul {
-    list-style: none;
-    padding: 0;
-}
-
-.pricing-item ul li {
-    margin-bottom: 10px;
     font-size: 1rem;
+    color: #666;
+    margin-bottom: 10px;
+    margin-left: 0px;
+    text-align: center;
+ 
 }
+
+.pricing-item .price {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+}
+
 
 /* Water Blasting Section */
 .water-blasting {
@@ -518,4 +539,75 @@ a {
     .contact form {
         width: 90%; /* Make form wider on mobile */
     }
+}
+
+/* Domestic Cleaning Section */
+.domestic {
+    padding: 60px 0;
+    text-align: center;
+    background: #fff;
+}
+
+.domestic h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.domestic h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.domestic-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.domestic-item {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.domestic-item:hover {
+    transform: translateY(-10px);
+}
+
+.domestic-item img {
+    max-width: 100%;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.domestic-item h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.domestic-item p {
+    font-size: 1rem;
+    color: #666;
+}
+
+/* Image Container for 4:3 Aspect Ratio */
+.image-container {
+    width: 100%; /* Full width of the parent container */
+    padding-top: 75%; /* 4:3 Aspect Ratio (3/4 = 0.75) */
+    position: relative;
+    overflow: hidden; /* Crop the image */
+    border-radius: 10px; /* Optional: Rounded corners */
+}
+
+.image-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensure the image fills the container */
 }
