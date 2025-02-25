@@ -528,7 +528,7 @@ a {
     }
 
     .service-item, .commercial-item, .pricing-item, .gallery img {
-        width: 100%; /* Full width for mobile */
+        width: 90%; /* Full width for mobile */
         margin-bottom: 20px;
     }
 
