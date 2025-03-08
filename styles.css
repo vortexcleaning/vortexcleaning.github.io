@@ -49,28 +49,7 @@ header {
     height: 95px;
 }
 
-/* Navigation */
-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    gap: 15px;
-}
 
-nav ul li a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: bold;
-    padding: 10px 15px;
-    transition: all 0.3s ease;
-}
-
-nav ul li a:hover {
-    background: #77aaff;
-    color: #fff;
-    border-radius: 5px;
-}
 
 /* Header Buttons */
 .header-buttons {
@@ -161,35 +140,137 @@ main {
 
 /* Services Section */
 .services {
-    background: #f4f4f4;
     padding: 60px 0;
     text-align: center;
+    background: #fff;
+}
+
+.services h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.services h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
 }
 
 .service-list {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
+    margin-bottom: 0px;
 }
 
 .service-item {
-    width: 30%;
-    margin-bottom: 20px;
     background: #fff;
-    padding: 20px;
+    padding: 0px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
     transition: transform 0.3s ease;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Distribute content evenly */
+    overflow: hidden; /* Prevent content from overflowing */
 }
 
-.service-item:hover{
+.service-item:hover {
     transform: translateY(-10px);
 }
 
-.service-item img{
-    max-width: 100%;
+.image-container {
+    position: relative;
+    width: 100%;
+  
+    overflow: hidden;
     border-radius: 10px;
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensure the image fills the container */
+    border-radius: 10px;
+    display: block;
+}
+
+.overlay {
+    position: absolute;
+    bottom: 0; /* Start at the bottom of the image */
+    left: 0;
+    width: 100%;
+    height: 15%; /* Cover only the bottom 1/3 of the image */
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* Align content to the bottom */
+    align-items: flex-start; /* Align content to the left */
+    text-align: left;
+    padding: 20px;
+    opacity: 1;
+    transition: height 0.3s ease, background 0.3s ease, opacity 0.3s ease;
+    z-index: 1; /* Ensure the overlay is above the image */
+    border-radius: 0px; /* Match the rounded edges of the container */
+}
+
+
+
+.overlay .description {
+    font-size: 1rem;
+    opacity: 0; /* Hide description by default */
+    transform: translateY(20px); /* Start description below */
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Hover Effects */
+.service-item:hover .overlay {
+    height: 100%; /* Expand to cover the entire image on hover */
+    background: rgba(0, 0, 0, 0.5); /* Ensure the background covers the entire image */
+}
+
+.service-item:hover .overlay h3 {
+    transform: translateY(-20px); /* Float name upward */
+    opacity: 0; /* Fade out name */
+}
+
+.service-item:hover .overlay .description {
+    opacity: 1; /* Fade in description */
+    transform: translateY(0); /* Move description into view */
+}
+
+.overlay h3 {
+    position: absolute; /* Manually position the h3 */
+    bottom: 20px; /* Position at the bottom */
+    left: 20px; /* Position at the left */
+  
+    font-size: 1.5rem;
+    margin: 0; /* Remove default margins */
+    padding: 10px; /* Add padding for the background */
+  
+    border-radius: 5px; /* Optional: Add rounded corners to the name background */
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+
+
+.service-item h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.service-item p {
+    font-size: 1rem;
+    color: white;
+    margin: 0 20px; /* Add left and right margins */
+    padding: 7px; /* Add padding for better spacing */
+    max-width: 100%; /* Ensure the text doesn't exceed the container width */
+    overflow: hidden; /* Prevent text from overflowing */
+    text-overflow: ellipsis; /* Add ellipsis for overflow text */
+    white-space: normal; /* Allow text to wrap */
+    word-wrap: break-word; /* Break long words if necessary */
 }
 
 /* Commercial Section */
@@ -296,6 +377,97 @@ main {
 
 .contact-cta .btn.large-btn {
     margin-top: 10px; /* Space above the button */
+
+}
+
+/* Navigation Bar Styles */
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+nav ul li {
+    position: relative;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white; /* Default text color */
+    font-weight: bold;
+    padding: 10px 15px;
+    display: block;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #007BFF; /* Hover text color */
+}
+
+/* Dropdown Menu Styles */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff; /* Dropdown background color */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    min-width: 210px;
+    border-radius: 4px;
+}
+
+.dropdown-menu li {
+    margin: 0;
+}
+
+.dropdown-menu li a {
+    padding: 10px 20px;
+    color: #333; /* Dropdown text color */
+    display: block;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown-menu li a:hover {
+    background-color: #f8f9fa; /* Dropdown hover background color */
+    color: #007BFF; /* Dropdown hover text color */
+}
+
+/* Show Dropdown on Hover */
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+/* Add a caret icon to dropdown items */
+.dropdown > a::after {
+    content: "\f107"; /* Font Awesome caret icon */
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    margin-left: 5px;
+    color: white; /* Default caret color */
+    transition: color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+/* Change caret color on hover */
+.dropdown > a:hover::after {
+    color: #007BFF; /* Hover caret color */
+}
+
+/* Header Buttons Styles */
+.header-buttons .btn {
+    background-color: #007BFF; /* Button background color */
+    color: #fff; /* Button text color */
+    padding: 10px 20px;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.header-buttons .btn:hover {
+    background-color: #0056b3; /* Button hover background color */
 }
 
 /* Portfolio Section */
