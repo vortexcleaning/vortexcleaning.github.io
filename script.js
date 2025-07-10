@@ -14,3 +14,33 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 });
+document.addEventListener('DOMContentLoaded', function() {
+    const reviews = document.querySelectorAll('.review');
+    const prevBtn = document.querySelector('.prev');
+    const nextBtn = document.querySelector('.next');
+    let currentIndex = 0;
+
+    function showReview(index) {
+        reviews.forEach(review => review.classList.remove('active'));
+        reviews[index].classList.add('active');
+    }
+
+    function nextReview() {
+        currentIndex = (currentIndex + 1) % reviews.length;
+        showReview(currentIndex);
+    }
+
+    function prevReview() {
+        currentIndex = (currentIndex - 1 + reviews.length) % reviews.length;
+        showReview(currentIndex);
+    }
+
+    nextBtn.addEventListener('click', nextReview);
+    prevBtn.addEventListener('click', prevReview);
+    
+    // Auto-rotate every 5 seconds (optional)
+    setInterval(nextReview, 5000);
+    
+    // Show first review initially
+    showReview(currentIndex);
+});
